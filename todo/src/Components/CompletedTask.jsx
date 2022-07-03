@@ -1,4 +1,6 @@
-import { Flex, Box, Heading, Button, ButtonGroup } from '@chakra-ui/react'
+import { Flex, Box, Heading, Button, ButtonGroup } from '@chakra-ui/react';
+import { Icon } from '@chakra-ui/react'
+import { MdAssignmentReturn } from 'react-icons/md';
 // import { useState } from 'react'
 
 const CompletedTask = ({ list, handleInCompletedTask }) => {
@@ -7,15 +9,14 @@ const CompletedTask = ({ list, handleInCompletedTask }) => {
             <Box >
                 <Flex minWidth='max-content' alignItems='center' gap='2'>
                     <Box p='2'>
-                        <Heading size='md'>{list.task}</Heading>
+                        <Heading >{list.task}</Heading>
                     </Box>
                     {/* <Spacer w = "10px" /> */}
                     <ButtonGroup gap='2' p="4" >
-                        <Button colorScheme='teal' onClick={() => handleInCompletedTask(list)}>InComplete</Button>
+                        <Button colorScheme='teal' onClick={() => handleInCompletedTask(list)}><Icon as={MdAssignmentReturn} /></Button>
                     </ButtonGroup>
                 </Flex>
             </Box>
-
 
         </div>
     </>

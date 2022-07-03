@@ -1,4 +1,4 @@
-import { Input, InputGroup, InputRightElement, Button, Heading } from '@chakra-ui/react'
+import { Input, InputGroup, InputRightElement, Button, Heading, } from '@chakra-ui/react'
 import { useState } from 'react'
 import { TodoItem } from './TodoItems';
 import { Grid, GridItem } from '@chakra-ui/react'
@@ -9,6 +9,10 @@ import { DeletedTask } from './DeletedTask';
 import { useEffect } from 'react';
 import axios from "axios"
 import { EditTodo } from './EditTodo';
+// 1. Import
+import { Icon } from '@chakra-ui/react'
+import { MdAdd } from 'react-icons/md'
+
 
 
 const Todo = () => {
@@ -23,36 +27,40 @@ const Todo = () => {
         getTodos();
     }, [])
 
-    const todosInstance = axios.create({
-        baseURL: "http://localhost:3001/",
-    })
+    // const todosInstance = axios.create({
+    //     // baseURL: "http://localhost:3001/",
+    //     baseURL :"https://todoapp-nitesh.herokuapp.com/"
+    // })
 
     const getTodos = async () => {
-        const res = await todosInstance.get(`todos`);
+        // const res = await todosInstance.get(`todos`);
+        const res = await fetch("http://todoapp-nitesh.herokuapp.com/todos")
+        let data = await res.json()
         console.log("res", res)
-        setinputList(res.data);
+        // setinputList(res.data);
+        setinputList(data);
         setIsLoading(false);
     }
     // getTods();
 
-    const handleAddTask = async () => {
+    const handleAddTask = () => {
         const data = {
             id: uuidv4(),
             task: inputValue,
             status: false
         }
         setinputList([...inputList, data]);
-        await todosInstance.post("todos", data)
+        // await todosInstance.post("todos", data)
         getTodos();
-        // fetch("http://localhost:3001/todos", {
-        //     method: "POST",
-        //     body: JSON.stringify(data),
-        //     headers: {
-        //         "Content-Type": "application/json"
-        //     }
-        // }).then(() => {
-        //     getTodos();
-        // });
+        fetch("http://todoapp-nitesh.herokuapp.com/todos", {
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(() => {
+            getTodos();
+        });
     }
 
     const handleDeleteTask = (item) => {
@@ -96,7 +104,7 @@ const Todo = () => {
             />
             <InputRightElement width='4.5rem'>
                 <Button h='1.75rem' size='sm' onClick={handleAddTask}>
-                    Add
+                <Icon as={MdAdd} />
                 </Button>
             </InputRightElement>
         </InputGroup>
@@ -109,8 +117,8 @@ const Todo = () => {
                 templateColumns='repeat(2, 1fr)'
                 gap={4}
             >
-                <GridItem rowSpan={2} colSpan={1} bg='blue.200'>
-                    <Heading>Task To complete</Heading>
+                <GridItem rowSpan={2} colSpan={1} h={600} bg='blue.200'>
+                    <Heading size='md'>Task To complete</Heading>
                     {inputList
                         // .filter((list) => showAll ? true : !showAll.status)
                         .map((list) => (

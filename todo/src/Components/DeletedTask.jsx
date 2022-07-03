@@ -1,4 +1,6 @@
 import { Flex,  Box, Heading, Button, ButtonGroup } from '@chakra-ui/react'
+import { Icon } from '@chakra-ui/react'
+import { MdDeleteOutline} from 'react-icons/md'
 // import { useState } from 'react'
 
 const DeletedTask = ({ list,  handleRemoveTask }) => {
@@ -11,7 +13,7 @@ const DeletedTask = ({ list,  handleRemoveTask }) => {
                     </Box>
                     {/* <Spacer w = "10px" /> */}
                     <ButtonGroup gap='2' p="4" >
-                        <Button colorScheme='teal' onClick={() => handleRemoveTask(list)}>Remove</Button>
+                        <Button colorScheme='teal' onClick={() => handleRemoveTask(list)}><Icon as={MdDeleteOutline} /></Button>
                        
                     </ButtonGroup>
                 </Flex>
