@@ -18,7 +18,6 @@ import { MdAdd } from 'react-icons/md'
 const Todo = () => {
     const [inputValue, setInputValue] = useState("");
     const [inputList, setinputList] = useState([]);
-    // const [showAll, setShowAll] = useState(true);
     const [deleted, setDeleted] = useState([]);
     const [completd, setCompletd] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
@@ -98,27 +97,31 @@ const Todo = () => {
     // };
     return <>
 
-        <InputGroup size='md' mt="1.5rem">
+        {/* todo Input Part  */}
+        <InputGroup size='md' mt="1.5rem" mb={5}>
             <Input pr='4.5rem' placeholder='Enter Task'
                 onChange={(e) => { setInputValue(e.target.value) }}
             />
             <InputRightElement width='4.5rem'>
                 <Button h='1.75rem' size='sm' onClick={handleAddTask}>
-                <Icon as={MdAdd} />
+                    <Icon as={MdAdd} />
                 </Button>
             </InputRightElement>
         </InputGroup>
-        <div>
-            {/* <TodoInput handleAdd={handleAddTask} /> */}
 
+        {/* <TodoInput handleAdd={handleAddTask} /> */}
+
+        <div>
             <Grid
                 h='200px'
                 templateRows='repeat(2, 1fr)'
                 templateColumns='repeat(2, 1fr)'
-                gap={4}
-            >
-                <GridItem rowSpan={2} colSpan={1} h={600} bg='blue.200'>
-                    <Heading size='md'>Task To complete</Heading>
+                gap={4}>
+
+                 {/* Adding task */}
+
+                <GridItem rowSpan={2} colSpan={1} h={600} bg='#4CACBC'>
+                    <Heading size='md' mt = "2" color = "#06283D" textDecoration= "underline" >Task To complete </Heading>
                     {inputList
                         // .filter((list) => showAll ? true : !showAll.status)
                         .map((list) => (
@@ -131,8 +134,10 @@ const Todo = () => {
                                 handleDeleteTask={handleDeleteTask}
                             />))}
                 </GridItem>
-                <GridItem colSpan={1} bg='green.300'>
-                    <Heading>Completed Task</Heading>
+
+                   {/* Completed task */}
+                <GridItem colSpan={1} bg='#6CC4A1'>
+                    <Heading size='md' mt = "2" color = "#06283D" textDecoration= "underline">Completed Task</Heading>
                     {completd.map((list) => (
                         <CompletedTask
                             list={list}
@@ -140,8 +145,11 @@ const Todo = () => {
                             handleInCompletedTask={handleInCompletedTask}
                         />))}
                 </GridItem>
-                <GridItem colSpan={1} bg='tomato'>
-                    <Heading>Deleted Task</Heading>
+
+                   {/* Deleted task */}
+
+                <GridItem colSpan={1} bg='#F6E3C5'>
+                    <Heading size='md' mt = "2" color = "#06283D" textDecoration= "underline">Deleted Task</Heading>
                     {deleted.map((list) => (
                         <DeletedTask
                             list={list}
