@@ -9,7 +9,6 @@ import { DeletedTask } from './DeletedTask';
 import { useEffect } from 'react';
 import axios from "axios"
 import { EditTodo } from './EditTodo';
-// 1. Import
 import { Icon } from '@chakra-ui/react'
 import { MdAdd } from 'react-icons/md'
 
