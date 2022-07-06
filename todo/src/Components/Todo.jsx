@@ -25,40 +25,44 @@ const Todo = () => {
         getTodos();
     }, [])
 
-    // const todosInstance = axios.create({
-    //     // baseURL: "http://localhost:3001/",
-    //     baseURL :"https://todoapp-nitesh.herokuapp.com/"
-    // })
+    const todosInstance = axios.create({
+        // baseURL: "http://localhost:3001/",
+        baseURL :"",
+    })
 
     const getTodos = async () => {
-        // const res = await todosInstance.get(`todos`);
-        const res = await fetch("http://todoapp-nitesh.herokuapp.com/todos")
-        let data = await res.json()
-        console.log("res", res)
-        // setinputList(res.data);
-        setinputList(data);
+        const res = await todosInstance.get(`/todos`);
+        setinputList(res.data);
         setIsLoading(false);
+
+        // Using fetch
+        // const res = await fetch("/todos")
+        // let data = await res.json()
+        // console.log("res", data)
+        // setinputList(data);
     }
     // getTods();
 
-    const handleAddTask = () => {
+    const handleAddTask = async () => {
         const data = {
             id: uuidv4(),
             task: inputValue,
             status: false
         }
         setinputList([...inputList, data]);
-        // await todosInstance.post("todos", data)
+        await todosInstance.post("/todos", data)
         getTodos();
-        fetch("http://todoapp-nitesh.herokuapp.com/todos", {
-            method: "POST",
-            body: JSON.stringify(data),
-            headers: {
-                "Content-Type": "application/json"
-            }
-        }).then(() => {
-            getTodos();
-        });
+
+        // Using fetch
+        // fetch("/todos", {
+        //     method: "POST",
+        //     body: JSON.stringify(data),
+        //     headers: {
+        //         "Content-Type": "application/json"
+        //     }
+        // }).then(() => {
+        //     getTodos();
+        // });
     }
 
     const handleDeleteTask = (item) => {
@@ -71,6 +75,7 @@ const Todo = () => {
     const handleCompletedTask = (item) => {
         setCompletd([...completd, item])
         const updatedlist = inputList.filter((listItem) => listItem.id !== item.id);
+        console.log("updated",updatedlist)
         setinputList(updatedlist);
     }
     const handleInCompletedTask = (item) => {
@@ -117,42 +122,38 @@ const Todo = () => {
                 templateColumns='repeat(2, 1fr)'
                 gap={4}>
 
-                 {/* Adding task */}
-
+                {/* Adding task */}
                 <GridItem rowSpan={2} colSpan={1} h={600} bg='#4CACBC'>
-                    <Heading size='md' mt = "2" color = "#06283D" textDecoration= "underline" >Task To complete </Heading>
+                    <Heading size='md' mt="2" color="#06283D" textDecoration="underline" >Task To complete </Heading>
                     {inputList
-                        // .filter((list) => showAll ? true : !showAll.status)
                         .map((list) => (
                             <TodoItem
                                 list={list}
-                                key={list.id}
-                                // handleToggle={handleToggle}
+                                key={list._id}
                                 handleEditTask={handleEditTask}
                                 handleCompletedTask={handleCompletedTask}
                                 handleDeleteTask={handleDeleteTask}
                             />))}
                 </GridItem>
 
-                   {/* Completed task */}
+                {/* Completed task */}
                 <GridItem colSpan={1} bg='#6CC4A1'>
-                    <Heading size='md' mt = "2" color = "#06283D" textDecoration= "underline">Completed Task</Heading>
+                    <Heading size='md' mt="2" color="#06283D" textDecoration="underline">Completed Task</Heading>
                     {completd.map((list) => (
                         <CompletedTask
                             list={list}
-                            key={list.id}
+                            key={list._id}
                             handleInCompletedTask={handleInCompletedTask}
                         />))}
                 </GridItem>
 
-                   {/* Deleted task */}
-
+                {/* Deleted task */}
                 <GridItem colSpan={1} bg='#F6E3C5'>
-                    <Heading size='md' mt = "2" color = "#06283D" textDecoration= "underline">Deleted Task</Heading>
+                    <Heading size='md' mt="2" color="#06283D" textDecoration="underline">Deleted Task</Heading>
                     {deleted.map((list) => (
                         <DeletedTask
                             list={list}
-                            key={list.id}
+                            key={list._id}
                             handleRemoveTask={handleRemoveTask}
                         />))
                     }
