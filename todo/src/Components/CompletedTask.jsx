@@ -17,8 +17,8 @@ const CompletedTask = ({ list, handleInCompletedTask }) => {
                         <Button
                             colorScheme='teal'
                             cursor="pointer"
-                            onMouseEnter={() => setIsShown(true)}
-                            onMouseLeave={() => setIsShown(false)}
+                            // onMouseEnter={() => setIsShown(true)}
+                            // onMouseLeave={() => setIsShown(false)}
                             onClick={() => handleInCompletedTask(list)}>{isShown ? <div>Incomplete</div> : <Icon as={MdAssignmentReturn} />}</Button>
 
                     </ButtonGroup>

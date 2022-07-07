@@ -17,8 +17,8 @@ const DeletedTask = ({ list, handleRemoveTask }) => {
                         <Button
                             colorScheme='teal'
                             cursor="pointer"
-                            onMouseEnter={() => setIsShown(true)}
-                            onMouseLeave={() => setIsShown(false)}
+                            // onMouseEnter={() => setIsShown(true)}
+                            // onMouseLeave={() => setIsShown(false)}
                             onClick={() => handleRemoveTask(list)}>{isShown ? <div>Remove</div> : <Icon as={MdDeleteOutline} />}</Button>
 
                     </ButtonGroup>

@@ -2,7 +2,8 @@ const mongoose = require("mongoose");
 
 const todoSchema = new mongoose.Schema({
     task: { type: String, required: true },
-    status: { type: String, required: false, default: "false" },
+    completedstatus: { type: String, required: false, default: "false" },
+    deletedstatus : {type: String, required: false, default: "false" }
 },
     {
         versionKey: false,

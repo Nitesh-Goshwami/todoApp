@@ -2,7 +2,7 @@
   "name": "todo",
   "version": "0.1.0",
   "private": true,
-  "proxy" :"https://todoapp-nitesh.herokuapp.com",
+  "proxy" :"http://localhost:3001",
   "dependencies": {
     "@chakra-ui/react": "^2.2.1",
     "@emotion/react": "^11.9.3",

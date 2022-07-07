@@ -29,20 +29,20 @@ const TodoItem = ({ list, handleCompletedTask, handleDeleteTask, handleEditTask 
                             <Button
                                 colorScheme='teal'
                                 cursor="pointer"
-                                onMouseEnter={() => setIsShown(true)}
-                                onMouseLeave={() => setIsShown(false)}
+                                // onMouseEnter={() => setIsShown(true)}
+                                // onMouseLeave={() => setIsShown(false)}
                                 onClick={() => handleDeleteTask(list)}>{isShown ? <div>Delete</div> : <Icon as={MdDelete} />}</Button>
                             <Button
                                 colorScheme='teal'
                                 cursor="pointer"
-                                onMouseEnter={() => setIsShown(true)}
-                                onMouseLeave={() => setIsShown(false)}
+                                // onMouseEnter={() => setIsShown(true)}
+                                // onMouseLeave={() => setIsShown(false)}
                                 onClick={() => handleCompletedTask(list)}>{isShown ? <div>Completed</div> : <Icon as={MdAddTask} />}</Button>
                             <Button
                                 colorScheme='teal'
                                 cursor="pointer"
-                                onMouseEnter={() => setIsShown(true)}
-                                onMouseLeave={() => setIsShown(false)}
+                                // onMouseEnter={() => setIsShown(true)}
+                                // onMouseLeave={() => setIsShown(false)}
                                 onClick={() => handleEditTask(list)}>{isShown ? <div>Edit</div> : <Icon as={MdEdit} />}</Button>
                         </ButtonGroup>
                     </Flex>

@@ -2,7 +2,7 @@ import { Input, InputGroup, InputRightElement, Button, Heading, } from '@chakra-
 import { useState } from 'react'
 import { TodoItem } from './TodoItems';
 import { Grid, GridItem } from '@chakra-ui/react'
-import { v4 as uuidv4 } from 'uuid';
+// import { v4 as uuidv4 } from 'uuid';
 // import { TodoInput } from './TodoInput';
 import { CompletedTask } from './CompletedTask';
 import { DeletedTask } from './DeletedTask';
@@ -20,32 +20,43 @@ const Todo = () => {
     const [deleted, setDeleted] = useState([]);
     const [completd, setCompletd] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [check, setCheck] = useState(false)
 
     useEffect(() => {
         getTodos();
-    }, [])
+        getCompleted();
+        getDeleted();
+    }, [check])
 
     const todosInstance = axios.create({
         // baseURL: "http://localhost:3001/",
-        baseURL :"",
+        baseURL: "",
     })
 
     const getTodos = async () => {
         const res = await todosInstance.get(`/todos`);
         setinputList(res.data);
         setIsLoading(false);
-
         // Using fetch
         // const res = await fetch("/todos")
         // let data = await res.json()
         // console.log("res", data)
         // setinputList(data);
     }
-    // getTods();
+
+    const getCompleted = async () => {
+        const res = await todosInstance.get(`/todos/completed`);
+        setCompletd(res.data);
+    }
+    const getDeleted = async () => {
+        const res = await todosInstance.get(`/todos/deleted`);
+        setDeleted(res.data);
+    }
+
 
     const handleAddTask = async () => {
         const data = {
-            id: uuidv4(),
+            // id: uuidv4(),
             task: inputValue,
             status: false
         }
@@ -65,28 +76,49 @@ const Todo = () => {
         // });
     }
 
-    const handleDeleteTask = (item) => {
-        setDeleted([...deleted, item])
-        const deletedlist = inputList.filter((listItem) => listItem.id !== item.id);
-        // setDeleted(deletedlist);
-        setinputList(deletedlist);
+    // const handleDeleteTask = (item) => {
+    //     setDeleted([...deleted, item])
+    //     const deletedlist = inputList.filter((listItem) => listItem._id !== item._id);
+    //     // setDeleted(deletedlist);
+    //     setinputList(deletedlist);
+    // }
+
+    const handleDeleteTask = async (item) => {
+        let id = item._id;
+        let temp = {
+            deletedstatus: true,
+            completedstatus: false,
+        }
+        await todosInstance.patch(`/todos/${id}`, temp)
+        // getTodos();
+        setCheck(!check)
+    }
+    const handleCompletedTask = async (item) => {
+        let id = item._id;
+        let temp = {
+            completedstatus: true,
+            deletedstatus: false,
+        }
+        await todosInstance.patch(`/todos/${id}`, temp)
+        // getTodos();
+        setCheck(!check)
     }
 
-    const handleCompletedTask = (item) => {
-        setCompletd([...completd, item])
-        const updatedlist = inputList.filter((listItem) => listItem.id !== item.id);
-        console.log("updated",updatedlist)
-        setinputList(updatedlist);
-    }
+    // const handleCompletedTask = (item) => {
+    //     setCompletd([...completd, item])
+    //     const updatedlist = inputList.filter((listItem) => listItem._id !== item._id);
+    //     console.log("updated", updatedlist)
+    //     setinputList(updatedlist);
+    // }
     const handleInCompletedTask = (item) => {
         setinputList([...inputList, item])
-        const updatedlist2 = completd.filter((listItem) => listItem.id !== item.id);
+        const updatedlist2 = completd.filter((listItem) => listItem._id !== item._id);
         setCompletd(updatedlist2);
     }
 
     const handleRemoveTask = (item) => {
         setinputList([...inputList, item])
-        const updatedlist3 = deleted.filter((listItem) => listItem.id !== item.id);
+        const updatedlist3 = deleted.filter((listItem) => listItem._id !== item._id);
         setDeleted(updatedlist3);
     }
     const handleEditTask = () => {
