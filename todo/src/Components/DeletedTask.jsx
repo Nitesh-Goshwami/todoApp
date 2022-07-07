@@ -1,4 +1,4 @@
-import { Flex, Box, Heading, Button, ButtonGroup, Spacer } from '@chakra-ui/react'
+import { Flex, Box, Heading, Button, ButtonGroup, Spacer, Tooltip } from '@chakra-ui/react'
 import { Icon } from '@chakra-ui/react'
 import { MdDeleteOutline } from 'react-icons/md'
 import { useState } from 'react'
@@ -8,19 +8,21 @@ const DeletedTask = ({ list, handleRemoveTask }) => {
     return <>
         <div >
             <Box >
-                <Flex minWidth='max-content' alignItems='center' gap='2'>
+                <Flex minWidth='max-content' alignItems='center' gap='2' bg="#F5EDDC" borderRadius="10px" m="5">
                     <Box p='2'>
                         <Heading size='md' color="#293462">{list.task}</Heading>
                     </Box>
                     <Spacer />
-                    <ButtonGroup gap='2' p="4" >
-                        <Button
-                            colorScheme='teal'
-                            cursor="pointer"
-                            // onMouseEnter={() => setIsShown(true)}
-                            // onMouseLeave={() => setIsShown(false)}
-                            onClick={() => handleRemoveTask(list)}>{isShown ? <div>Remove</div> : <Icon as={MdDeleteOutline} />}</Button>
-
+                    <ButtonGroup gap='1' p="2">
+                        <Tooltip label='Permanent Delete' fontSize='s' placement='top-end' hasArrow>
+                            <Button
+                                colorScheme='facebook'
+                                cursor="pointer"
+                                // onMouseEnter={() => setIsShown(true)}
+                                // onMouseLeave={() => setIsShown(false)}
+                                onClick={() => handleRemoveTask(list)}><Icon as={MdDeleteOutline} />
+                            </Button>
+                        </Tooltip>
                     </ButtonGroup>
                 </Flex>
             </Box>

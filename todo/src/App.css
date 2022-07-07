@@ -3,4 +3,10 @@
   margin: auto;
   width: 80%;
   justify-content: center;
+  
+}
+
+body  {
+  background-image: url("http://www.vanseodesign.com/blog/wp-content/uploads/2011/10/background-3.jpg");
+  /* background-color: red; */
 }
