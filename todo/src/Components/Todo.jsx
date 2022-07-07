@@ -2,15 +2,13 @@ import { Input, InputGroup, InputRightElement, Button, Heading, } from '@chakra-
 import { useState } from 'react'
 import { TodoItem } from './TodoItems';
 import { Grid, GridItem } from '@chakra-ui/react'
-// import { v4 as uuidv4 } from 'uuid';
-// import { TodoInput } from './TodoInput';
 import { CompletedTask } from './CompletedTask';
 import { DeletedTask } from './DeletedTask';
 import { useEffect } from 'react';
 import axios from "axios"
-import { EditTodo } from './EditTodo';
 import { Icon } from '@chakra-ui/react'
 import { MdAdd } from 'react-icons/md'
+import PopupGfg from './EditTodo';
 
 
 
@@ -19,8 +17,9 @@ const Todo = () => {
     const [inputList, setinputList] = useState([]);
     const [deleted, setDeleted] = useState([]);
     const [completd, setCompletd] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
-    const [check, setCheck] = useState(false)
+    // const [isLoading, setIsLoading] = useState(true);
+    const [check, setCheck] = useState(false);
+    const [edited, setEdited] = useState()
 
     useEffect(() => {
         getTodos();
@@ -36,7 +35,7 @@ const Todo = () => {
     const getTodos = async () => {
         const res = await todosInstance.get(`/todos`);
         setinputList(res.data);
-        setIsLoading(false);
+        // setIsLoading(false);
         // Using fetch
         // const res = await fetch("/todos")
         // let data = await res.json()
@@ -90,7 +89,7 @@ const Todo = () => {
             completedstatus: false,
         }
         await todosInstance.patch(`/todos/${id}`, temp)
-        // getTodos();
+        getTodos();
         setCheck(!check)
     }
     const handleCompletedTask = async (item) => {
@@ -100,7 +99,21 @@ const Todo = () => {
             deletedstatus: false,
         }
         await todosInstance.patch(`/todos/${id}`, temp)
-        // getTodos();
+        getTodos();
+        setCheck(!check)
+    }
+
+    const handleEditInput = (e) => {
+        setEdited(e.target.value)
+        console.log(e.target.value);
+    }
+    const handleEditTask = async (item) => {
+        let id = item._id;
+        let temp = {
+            task : edited,
+        }
+        await todosInstance.patch(`/todos/${id}`, temp)
+        getTodos();
         setCheck(!check)
     }
 
@@ -115,15 +128,17 @@ const Todo = () => {
         const updatedlist2 = completd.filter((listItem) => listItem._id !== item._id);
         setCompletd(updatedlist2);
     }
-
-    const handleRemoveTask = (item) => {
-        setinputList([...inputList, item])
-        const updatedlist3 = deleted.filter((listItem) => listItem._id !== item._id);
-        setDeleted(updatedlist3);
+    const handleRemoveTask = async(item) => {
+        let id = item._id;
+        await todosInstance.delete(`/todos/${id}`)
+        getTodos();
+        setCheck(!check)
     }
-    const handleEditTask = () => {
-        console.log("edit mode activated")
-    }
+    // const handleRemoveTask = (item) => {
+    //     setinputList([...inputList, item])
+    //     const updatedlist3 = deleted.filter((listItem) => listItem._id !== item._id);
+    //     setDeleted(updatedlist3);
+    // }
 
     // const handleToggle = (id) => {
     //     const updatedTodo = inputList.map((item) =>
@@ -150,13 +165,13 @@ const Todo = () => {
         <div>
             <Grid
                 h='200px'
-                templateRows='repeat(2, 1fr)'
-                templateColumns='repeat(2, 1fr)'
+                templateRows='repeat(1, 1fr)'
+                templateColumns='repeat(3, 1fr)'
                 gap={4}>
 
                 {/* Adding task */}
-                <GridItem rowSpan={2} colSpan={1} h={600} bg='#4CACBC'>
-                    <Heading size='md' mt="2" color="#06283D" textDecoration="underline" >Task To complete </Heading>
+                <GridItem colSpan={1} bg='#4CACBC'>
+                    <Heading size='md' mt="2" color="#06283D" textDecoration="underline" >In Progress</Heading>
                     {inputList
                         .map((list) => (
                             <TodoItem
@@ -165,6 +180,7 @@ const Todo = () => {
                                 handleEditTask={handleEditTask}
                                 handleCompletedTask={handleCompletedTask}
                                 handleDeleteTask={handleDeleteTask}
+                                handleEditInput={handleEditInput}
                             />))}
                 </GridItem>
 
@@ -191,7 +207,7 @@ const Todo = () => {
                     }
                 </GridItem>
             </Grid>
-            {/* <EditTodo handleAdd = {handleAddTask}/> */}
+            {/* <PopupGfg/> */}
         </div>
     </>
 
