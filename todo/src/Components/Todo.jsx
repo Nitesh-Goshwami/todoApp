@@ -8,7 +8,7 @@ import { useEffect } from 'react';
 import axios from "axios"
 import { Icon } from '@chakra-ui/react'
 import { MdAdd } from 'react-icons/md'
-import PopupGfg from './EditTodo';
+import 'reactjs-popup/dist/index.css';
 
 
 
@@ -36,6 +36,7 @@ const Todo = () => {
         const res = await todosInstance.get(`/todos`);
         setinputList(res.data);
         // setIsLoading(false);
+
         // Using fetch
         // const res = await fetch("/todos")
         // let data = await res.json()
@@ -75,12 +76,6 @@ const Todo = () => {
         // });
     }
 
-    // const handleDeleteTask = (item) => {
-    //     setDeleted([...deleted, item])
-    //     const deletedlist = inputList.filter((listItem) => listItem._id !== item._id);
-    //     // setDeleted(deletedlist);
-    //     setinputList(deletedlist);
-    // }
 
     const handleDeleteTask = async (item) => {
         let id = item._id;
@@ -110,12 +105,33 @@ const Todo = () => {
     const handleEditTask = async (item) => {
         let id = item._id;
         let temp = {
-            task : edited,
+            task: edited,
         }
         await todosInstance.patch(`/todos/${id}`, temp)
         getTodos();
         setCheck(!check)
     }
+
+    const handleRemoveTask = async (item) => {
+        let id = item._id;
+        await todosInstance.delete(`/todos/${id}`)
+        getTodos();
+        setCheck(!check)
+    }
+
+    const handleInCompletedTask = async (item) => {
+        let id = item._id;
+        let temp = {
+            completedstatus: false,
+            deletedstatus: false,
+        }
+        await todosInstance.patch(`/todos/${id}`, temp)
+        getTodos();
+        setCheck(!check)
+    }
+
+
+    // Without server impletementation of above functionalities
 
     // const handleCompletedTask = (item) => {
     //     setCompletd([...completd, item])
@@ -123,29 +139,29 @@ const Todo = () => {
     //     console.log("updated", updatedlist)
     //     setinputList(updatedlist);
     // }
-    const handleInCompletedTask = (item) => {
-        setinputList([...inputList, item])
-        const updatedlist2 = completd.filter((listItem) => listItem._id !== item._id);
-        setCompletd(updatedlist2);
-    }
-    const handleRemoveTask = async(item) => {
-        let id = item._id;
-        await todosInstance.delete(`/todos/${id}`)
-        getTodos();
-        setCheck(!check)
-    }
+    // const handleDeleteTask = (item) => {
+    //     setDeleted([...deleted, item])
+    //     const deletedlist = inputList.filter((listItem) => listItem._id !== item._id);
+    //     // setDeleted(deletedlist);
+    //     setinputList(deletedlist);
+    // }
+    // const handleInCompletedTask = (item) => {
+    //     setinputList([...inputList, item])
+    //     const updatedlist2 = completd.filter((listItem) => listItem._id !== item._id);
+    //     setCompletd(updatedlist2);
+    // }
     // const handleRemoveTask = (item) => {
     //     setinputList([...inputList, item])
     //     const updatedlist3 = deleted.filter((listItem) => listItem._id !== item._id);
     //     setDeleted(updatedlist3);
     // }
-
     // const handleToggle = (id) => {
     //     const updatedTodo = inputList.map((item) =>
     //         item.id === id ? { ...item, status: !item.status } : item
     //     );
     //     setinputList(updatedTodo);
     // };
+
     return <>
 
         {/* todo Input Part  */}
@@ -207,7 +223,6 @@ const Todo = () => {
                     }
                 </GridItem>
             </Grid>
-            {/* <PopupGfg/> */}
         </div>
     </>
 
