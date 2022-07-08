@@ -187,7 +187,7 @@ const Todo = () => {
 
                 {/* Adding task */}
                 <GridItem colSpan={1} bg='#CFD2CF'>
-                    <Heading size='md' mt="2" color="#06283D" textDecoration="underline" >In Progress</Heading>
+                    <Heading size='md' color="#06283D" textDecoration="underline" bg = "yellow.300" h = "50px" p = "2">In Progress</Heading>
                     {inputList
                         .map((list) => (
                             <TodoItem
@@ -202,7 +202,7 @@ const Todo = () => {
 
                 {/* Completed task */}
                 <GridItem colSpan={1} bg='#CFD2CF'>
-                    <Heading size='md' mt="2" color="#06283D" textDecoration="underline">Completed Task</Heading>
+                    <Heading size='md' color="#06283D" textDecoration="underline" bg = "green.300" h = "50px" p = "2">Completed Task</Heading>
                     {completd.map((list) => (
                         <CompletedTask
                             list={list}
@@ -213,7 +213,7 @@ const Todo = () => {
 
                 {/* Deleted task */}
                 <GridItem colSpan={1} bg='#CFD2CF'>
-                    <Heading size='md' mt="2" color="#06283D" textDecoration="underline">Deleted Task</Heading>
+                    <Heading size='md' color="#06283D" textDecoration="underline" bg = "red.200" h = "50px" p = "2">Deleted Task</Heading>
                     {deleted.map((list) => (
                         <DeletedTask
                             list={list}
