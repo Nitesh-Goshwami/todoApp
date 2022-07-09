@@ -49,24 +49,6 @@ const Drawers = () => {
                         </ListItem>
                     </List>
                 </DrawerBody>
-                {/* <DrawerBody>
-                    <Icon font-size="24px" as={MdHome} />  Home
-                </DrawerBody>
-                <DrawerBody>
-                    <Icon font-size="24px" as={MdHome} />  Home
-                </DrawerBody>
-                <DrawerBody>
-                    <Icon font-size="24px" as={MdHome} />  Home
-                </DrawerBody>
-                <DrawerBody>
-                    <Icon font-size="24px" as={MdHome} />  Home
-                </DrawerBody>
-                <DrawerBody>
-                    <Icon font-size="24px" as={MdHome} />  Home
-                </DrawerBody>
-                <DrawerBody>
-                    <Icon font-size="24px" as={MdHome} />  Home
-                </DrawerBody> */}
                 <DrawerFooter>
                 </DrawerFooter>
             </DrawerContent>
