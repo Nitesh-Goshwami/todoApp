@@ -189,8 +189,7 @@ const Todo = () => {
                 {/* Adding task */}
                 <GridItem colSpan={1} bg='#CFD2CF'>
                     <Heading size='md' color="#06283D" textDecoration="underline" bg="yellow.300" h="50px" p="2">In Progress</Heading>
-                    {isLoading && inputList
-                        .map((list) => (
+                    {isLoading && inputList.map((list) => (
                             <TodoItem
                                 list={list}
                                 key={list._id}
