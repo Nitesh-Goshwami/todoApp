@@ -42,10 +42,10 @@ npm install redux react-redux redux-thunk axios react-router-dom @chakra-ui/reac
 ### Login Page
 ![Login page]()
 ### Dashboard page
-![Dashboard page](https://github.com/Nitesh-Goshwami/todoApp/blob/master/todo/Images/Home.png?raw=true)
+![Dashboard page](https://github.com/Nitesh-Goshwami/todoApp/blob/master/todo/public/Images/Home.png?raw=true)
 ### Edit The Task
-![Edit page](https://github.com/Nitesh-Goshwami/todoApp/blob/master/todo/Images/Edit.png?raw=true)
+![Edit page](https://github.com/Nitesh-Goshwami/todoApp/blob/master/todo/public/Images/Edit.png?raw=true)
 ### Drawer page 
-![Drawer page](https://github.com/Nitesh-Goshwami/todoApp/blob/master/todo/Images/Drawer.png?raw=true)
+![Drawer page](https://github.com/Nitesh-Goshwami/todoApp/blob/master/todo/public/Images/Drawer.png?raw=true)
 
 I want to take this opportunity to thank you for visiting here.
