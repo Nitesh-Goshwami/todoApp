@@ -1,10 +1,10 @@
 # Todo App
 
-Please visit the app [Todo App](https://him-todo.netlify.app/).
+Please visit the app [Todo App](https://nitesh-todo.netlify.app/).
 
 Or copy the link below, in your browser
 ```
-https://him-todo.netlify.app/
+https://nitesh-todo.netlify.app/
 ```
 
 ## Using the app
@@ -15,9 +15,10 @@ In this project, a few technologies and packages were used, listed below
 2. Redux-thunks
 3. Redux
 4. CSS
-5. Axios
-6. react-router-dom
-7. Material UI
+5. JSX
+6. Axios
+7. react-router-dom
+8. Chakra UI
 
 ### Install the packages
 After cloning this repo do
@@ -25,29 +26,26 @@ After cloning this repo do
 npm install
 ```
 ```
-npm install redux react-redux redux-thunk axios react-router-dom material-ui/@core @material-ui/icons @material-ui/lab
+npm install redux react-redux redux-thunk axios react-router-dom @chakra-ui/react @emotion/react @emotion/styled framer-motion
+
 ```
 
  
 
 ## Functionalities associated with this app
-1. A user can add the new task as well as sub-task with it. 
-2. user can see the task whichever they added earlier.
-3. User can toggle the status as completed or Pending.
-4. Particular task and all the information can be seen separately on  another page.
-5. User can change the title, description and sub-tasks
-6. New sub-task can be added if the user wanted to.
-7. Last but not least, the user can change the theme of the app.
+1. A user can add the new task .
+2. User can toggle the status as completed or Pending.
+3. User can Edit the title, description.
+4. A user can delete the task and can see deleted list and can also delete it permanantly. 
 
 ## Some of the snaps from the app
 ### Login Page
-![Login page](https://github.com/himrd95/todo/blob/master/public/login.png?raw=true)
+![Login page]()
 ### Dashboard page
-![Dashboard page]([https://github.com/Nitesh-Goshwami/todoApp/blob/master/todo/Images/Home.png?raw=true])
-### Create new Task page
-![create new task page](https://github.com/himrd95/todo/blob/master/public/create.png?raw=true)
-### Task page 
-![Task page](https://github.com/himrd95/todo/blob/master/public/task.png?raw=true)
-### Edit task page
-![Edit task page](https://github.com/himrd95/todo/blob/master/public/edit.png?raw=true)
+![Dashboard page](https://github.com/Nitesh-Goshwami/todoApp/blob/master/todo/Images/Home.png?raw=true)
+### Edit The Task
+![Edit page](https://github.com/Nitesh-Goshwami/todoApp/blob/master/todo/Images/Edit.png?raw=true)
+### Drawer page 
+![Drawer page](https://github.com/Nitesh-Goshwami/todoApp/blob/master/todo/Images/Drawer.png?raw=true)
+
 I want to take this opportunity to thank you for visiting here.
