@@ -11,13 +11,13 @@ import {
     Input,
     Tooltip
 } from '@chakra-ui/react';
-import { useState } from 'react'
+// import { useState } from 'react'
 import { Icon } from '@chakra-ui/react'
 import { MdDelete, MdEdit, MdAddTask, MdCheckCircle } from 'react-icons/md';
 import Popup from 'reactjs-popup';
 
 const TodoItem = ({ list, handleCompletedTask, handleDeleteTask, handleEditTask, handleEditInput }) => {
-    const [isShown, setIsShown] = useState(false);
+    // const [isShown, setIsShown] = useState(false);
     return <>
         <List spacing={3} bg="#F5EDDC" borderRadius="10px" m="5">
             <ListItem>

@@ -60,7 +60,7 @@ const Todo = () => {
             task: inputValue,
             status: false
         }
-        setinputList([...inputList, data]);
+        setinputList([...inputList, data].reverse());
         await todosInstance.post("/todos", data)
         getTodos();
 
