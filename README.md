@@ -1,10 +1,10 @@
 # Todo App
 
-Please visit the app [Todo App](https://him-todo.netlify.app/).
+Please visit the app [Todo App](https://nit-todoapp.netlify.app/).
 
 Or copy the link below, in your browser
 ```
-https://him-todo.netlify.app/
+https://nit-todoapp.netlify.app/
 ```
 
 ## Using the app
