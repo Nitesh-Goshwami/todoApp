@@ -25,7 +25,7 @@ const TodoItem = ({ list, handleCompletedTask, handleDeleteTask, handleEditTask,
                     <Flex minWidth='max-content' alignItems='center' gap='1'>
                         {/* <Box p='2'> */}
                         <ListIcon mr="1" as={MdCheckCircle} color='green.500' />
-                        <Heading size='md' color="#293462">{list.task}</Heading>
+                        <Heading as="h4" size='sm' color="#293462" >{list.task}</Heading>
                         {/* </Box> */}
                         <Spacer />
                         <ButtonGroup gap='1' p="2" >
@@ -49,15 +49,17 @@ const TodoItem = ({ list, handleCompletedTask, handleDeleteTask, handleEditTask,
                                     <Icon as={MdEdit} />
                                 </Button>
                             }
-                                position="right center" width = "200px">
-                                <Input pr='4.5rem' placeholder='Edit Task'
-                                    onChange={(e) => handleEditInput(e)}
-                                />
-                                <Button
-                                    position="right"
-                                    colorScheme='facebook'
-                                    cursor="pointer"
-                                    onClick={() => handleEditTask(list)}>Save</Button>
+                                position="right center" width= "500">
+                                <div style={{ height : "100px",backgroundColor:"#495C83" }}>
+                                    <Input pr='4.5rem' placeholder='Edit Task' backgroundColor="#EAF6F6"
+                                        onChange={(e) => handleEditInput(e)} />
+                                    <Button
+                                        position="right"
+                                        colorScheme='yellow'
+                                        cursor="pointer"
+                                        onClick={() => handleEditTask(list)}>Save
+                                    </Button>
+                                </div>
                             </Popup>
                             {/* </Tooltip> */}
                         </ButtonGroup>

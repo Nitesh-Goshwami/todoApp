@@ -9,7 +9,7 @@ import axios from "axios"
 import { Icon } from '@chakra-ui/react'
 import { MdAdd } from 'react-icons/md'
 import 'reactjs-popup/dist/index.css';
-
+import "./todo.css";
 
 
 const Todo = () => {
@@ -17,7 +17,7 @@ const Todo = () => {
     const [inputList, setinputList] = useState([]);
     const [deleted, setDeleted] = useState([]);
     const [completd, setCompletd] = useState([]);
-    // const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
     const [check, setCheck] = useState(false);
     const [edited, setEdited] = useState()
 
@@ -35,7 +35,7 @@ const Todo = () => {
     const getTodos = async () => {
         const res = await todosInstance.get(`/todos`);
         setinputList(res.data);
-        // setIsLoading(false);
+        setIsLoading(true);
 
         // Using fetch
         // const res = await fetch("/todos")
@@ -180,15 +180,16 @@ const Todo = () => {
 
         <div>
             <Grid
+                className="wrapper"
                 h='200px'
-                templateRows='repeat(1, 1fr)'
-                templateColumns='repeat(3, 1fr)'
+                // templateRows='repeat(1, 1fr)'
+                // templateColumns='repeat(3, 1fr)'
                 gap={4}>
 
                 {/* Adding task */}
                 <GridItem colSpan={1} bg='#CFD2CF'>
-                    <Heading size='md' color="#06283D" textDecoration="underline" bg = "yellow.300" h = "50px" p = "2">In Progress</Heading>
-                    {inputList
+                    <Heading size='md' color="#06283D" textDecoration="underline" bg="yellow.300" h="50px" p="2">In Progress</Heading>
+                    {isLoading && inputList
                         .map((list) => (
                             <TodoItem
                                 list={list}
@@ -202,8 +203,8 @@ const Todo = () => {
 
                 {/* Completed task */}
                 <GridItem colSpan={1} bg='#CFD2CF'>
-                    <Heading size='md' color="#06283D" textDecoration="underline" bg = "green.300" h = "50px" p = "2">Completed Task</Heading>
-                    {completd.map((list) => (
+                    <Heading size='md' color="#06283D" textDecoration="underline" bg="green.300" h="50px" p="2">Completed Task</Heading>
+                    {isLoading && completd.map((list) => (
                         <CompletedTask
                             list={list}
                             key={list._id}
@@ -213,8 +214,8 @@ const Todo = () => {
 
                 {/* Deleted task */}
                 <GridItem colSpan={1} bg='#CFD2CF'>
-                    <Heading size='md' color="#06283D" textDecoration="underline" bg = "red.200" h = "50px" p = "2">Deleted Task</Heading>
-                    {deleted.map((list) => (
+                    <Heading size='md' color="#06283D" textDecoration="underline" bg="red.200" h="50px" p="2">Deleted Task</Heading>
+                    {isLoading && deleted.map((list) => (
                         <DeletedTask
                             list={list}
                             key={list._id}

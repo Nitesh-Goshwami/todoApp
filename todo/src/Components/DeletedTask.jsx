@@ -10,7 +10,7 @@ const DeletedTask = ({ list, handleRemoveTask }) => {
             <Box >
                 <Flex minWidth='max-content' alignItems='center' gap='2' bg="#F5EDDC" borderRadius="10px" m="5">
                     <Box p='2'>
-                        <Heading size='md' color="#293462">{list.task}</Heading>
+                        <Heading as = "h4" size='sm' color="#293462">{list.task}</Heading>
                     </Box>
                     <Spacer />
                     <ButtonGroup gap='1' p="2">
