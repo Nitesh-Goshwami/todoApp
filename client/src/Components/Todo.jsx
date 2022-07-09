@@ -25,7 +25,7 @@ const Todo = () => {
         getTodos();
         getCompleted();
         getDeleted();
-    },)
+    },[check])
 
     const todosInstance = axios.create({
         // baseURL: "http://localhost:3001/",
@@ -184,7 +184,7 @@ const Todo = () => {
                 h='200px'
                 // templateRows='repeat(1, 1fr)'
                 // templateColumns='repeat(3, 1fr)'
-                gap={4}>
+                gap={5}>
 
                 {/* Adding task */}
                 <GridItem colSpan={1} bg='#CFD2CF'>
