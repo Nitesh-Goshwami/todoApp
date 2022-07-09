@@ -43,7 +43,7 @@ npm install redux react-redux redux-thunk axios react-router-dom material-ui/@co
 ### Login Page
 ![Login page](https://github.com/himrd95/todo/blob/master/public/login.png?raw=true)
 ### Dashboard page
-![Dashboard page]([https://github.com/himrd95/todo/blob/master/public/dashboard.png?raw=true](https://github.com/Nitesh-Goshwami/todoApp/blob/master/todo/Images/Home.png?raw=true))
+![Dashboard page]([https://github.com/Nitesh-Goshwami/todoApp/blob/master/todo/Images/Home.png?raw=true])
 ### Create new Task page
 ![create new task page](https://github.com/himrd95/todo/blob/master/public/create.png?raw=true)
 ### Task page 
