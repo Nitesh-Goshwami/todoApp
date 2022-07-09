@@ -1,10 +1,8 @@
 import { Flex, Box, Heading, Button, ButtonGroup, Spacer,Tooltip } from '@chakra-ui/react';
 import { Icon } from '@chakra-ui/react'
 import { MdAssignmentReturn } from 'react-icons/md';
-import { useState } from 'react'
 
 const CompletedTask = ({ list, handleInCompletedTask }) => {
-    const [isShown, setIsShown] = useState(false);
     return <>
         <div >
             <Box >

@@ -25,7 +25,7 @@ const Todo = () => {
         getTodos();
         getCompleted();
         getDeleted();
-    }, [check])
+    },)
 
     const todosInstance = axios.create({
         // baseURL: "http://localhost:3001/",

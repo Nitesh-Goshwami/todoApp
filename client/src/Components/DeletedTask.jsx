@@ -1,10 +1,8 @@
 import { Flex, Box, Heading, Button, ButtonGroup, Spacer, Tooltip } from '@chakra-ui/react'
 import { Icon } from '@chakra-ui/react'
 import { MdDeleteOutline } from 'react-icons/md'
-import { useState } from 'react'
 
 const DeletedTask = ({ list, handleRemoveTask }) => {
-    const [isShown, setIsShown] = useState(false);
     return <>
         <div >
             <Box >
