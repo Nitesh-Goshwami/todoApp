@@ -8,6 +8,7 @@ const Todo = require("../models/todo.model");
 // exports.arr
 // <----------------------------------CRUD Operation for Todo----------------------------------->
 
+
 router.get("/", async (request, response) => {
     try {
         const results = await Todo.find().lean().exec();

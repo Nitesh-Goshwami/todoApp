@@ -29,11 +29,14 @@ const Todo = () => {
 
     const todosInstance = axios.create({
         // baseURL: "http://localhost:3001/",
+        // baseURL: "https://todoapp-nitesh.herokuapp.com",
         baseURL: "",
     })
 
     const getTodos = async () => {
-        const res = await todosInstance.get(`/todos`);
+        const res = await todosInstance.get(`/todos`, {
+            mode: 'no-cors'
+        });
         setinputList(res.data);
         setIsLoading(true);
 
@@ -45,11 +48,15 @@ const Todo = () => {
     }
 
     const getCompleted = async () => {
-        const res = await todosInstance.get(`/todos/completed`);
+        const res = await todosInstance.get(`/todos/completed`, {
+            mode: 'no-cors'
+        });
         setCompletd(res.data);
     }
     const getDeleted = async () => {
-        const res = await todosInstance.get(`/todos/deleted`);
+        const res = await todosInstance.get(`/todos/deleted` , {
+            mode: 'no-cors'
+        });
         setDeleted(res.data);
     }
 
