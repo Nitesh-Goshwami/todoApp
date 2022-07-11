@@ -19,7 +19,7 @@ const Navbar = () => {
                 <Link to="/signup">
                     <Button colorScheme='telegram' m="5px">Sign Up</Button>
                 </Link>
-                <Link to="/login">
+                <Link to="/signin">
                     <Button colorScheme='telegram' m="5px">Log in</Button>
                 </Link>
                 {/* <Button colorScheme='telegram' m ="5px">Sign Up</Button> */}

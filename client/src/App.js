@@ -6,8 +6,8 @@ import { ChakraProvider } from '@chakra-ui/react'
 import { Todo } from './Components/Todo';
 import { Navbar } from './Components/Navbar/Navbar';
 import { Routes, Route } from "react-router-dom";
-import { Login } from "./Components/Login/Login";
-import { Signup } from "./Components/Login/Signup";
+import { SignIn } from './Components/Login/SignIn';
+import { SignUp } from './Components/Login/Signup';
 
 function App() {
   return (
@@ -16,9 +16,8 @@ function App() {
       <Routes>
         {/* <div className="App"> */}
           <Route path={"/"} element={<Todo />}></Route>
-          <Route path={"/login"} element={<Login />}></Route>
-          <Route path={"/signup"} element={<Signup />}></Route>
-          {/* <Todo /> */}
+          <Route path={"/signin"} element={<SignIn/>}></Route>
+          <Route path={"/signup"} element={<SignUp/>}></Route>
         {/* </div> */}
       </Routes>
     </ChakraProvider >
