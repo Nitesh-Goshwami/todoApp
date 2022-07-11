@@ -12,8 +12,8 @@ import {
     ListItem, List
 } from '@chakra-ui/react'
 import { useRef } from 'react'
-import { MdMenu, MdHome,MdTask,MdDelete,MdOutlineTask } from 'react-icons/md';
-
+import { MdMenu, MdHome, MdTask, MdDelete, MdOutlineTask } from 'react-icons/md';
+import { Link } from "react-router-dom"
 
 const Drawers = () => {
     const { isOpen, onOpen, onClose } = useDisclosure()
@@ -35,16 +35,18 @@ const Drawers = () => {
                 <DrawerHeader>My Todo App</DrawerHeader>
                 <DrawerBody>
                     <List spacing={5} >
-                        <ListItem display= "flex" gap = {2} fontWeight = "bold">
-                            <Icon font-size="24px" as={MdHome} />  <div>Home</div>
+                        <ListItem display="flex" gap={2} fontWeight="bold">
+                            <Link to = "/">
+                                <Icon font-size="24px" as={MdHome} />  <div>Home</div>
+                            </Link>
                         </ListItem>
-                        <ListItem display= "flex" gap = {2} fontWeight = "bold">
+                        <ListItem display="flex" gap={2} fontWeight="bold">
                             <Icon font-size="24px" as={MdOutlineTask} />  <div>In Progress Task</div>
                         </ListItem>
-                        <ListItem display= "flex" gap = {2} fontWeight = "bold">
+                        <ListItem display="flex" gap={2} fontWeight="bold">
                             <Icon font-size="24px" as={MdTask} />  <div>Completed Task</div>
                         </ListItem>
-                        <ListItem display= "flex" gap = {2} fontWeight = "bold">
+                        <ListItem display="flex" gap={2} fontWeight="bold">
                             <Icon font-size="24px" as={MdDelete} />  <div>Deleted Task</div>
                         </ListItem>
                     </List>

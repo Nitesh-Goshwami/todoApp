@@ -11,8 +11,11 @@ const Todo = require("../models/todo.model");
 
 router.get("/", async (request, response) => {
     try {
+        response.setHeader("Access-Control-Allow-Origin", "*")
+        response.setHeader("Access-Control-Allow-Credentials", "true");
         const results = await Todo.find().lean().exec();
         let res = results.filter(el => el.deletedstatus == "false" && el.completedstatus == "false");
+
         console.log("res", res);
         // return response.send(res);
         return response.send(res);
@@ -23,6 +26,8 @@ router.get("/", async (request, response) => {
 });
 router.get("/all", async (request, response) => {
     try {
+        response.setHeader("Access-Control-Allow-Origin", "*")
+        response.setHeader("Access-Control-Allow-Credentials", "true");
         const results = await Todo.find().lean().exec();
 
         // return response.send(res);
@@ -36,6 +41,8 @@ router.get("/all", async (request, response) => {
 //for deleted task
 router.get("/deleted", async (request, response) => {
     try {
+        response.setHeader("Access-Control-Allow-Origin", "*")
+        response.setHeader("Access-Control-Allow-Credentials", "true");
         const results = await Todo.find().lean().exec();
         let res = results.filter(el => el.deletedstatus == "true" && el.completedstatus == "false");
         return response.send(res);
@@ -48,6 +55,8 @@ router.get("/deleted", async (request, response) => {
 //for complted task
 router.get("/completed", async (request, response) => {
     try {
+        response.setHeader("Access-Control-Allow-Origin", "*")
+        response.setHeader("Access-Control-Allow-Credentials", "true");
         const results = await Todo.find().lean().exec();
         let res = results.filter(el => el.completedstatus == "true" && el.deletedstatus == "false");
         return response.send(res);
@@ -59,6 +68,8 @@ router.get("/completed", async (request, response) => {
 
 router.post("/", async (request, response) => {
     try {
+        response.setHeader("Access-Control-Allow-Origin", "*")
+        response.setHeader("Access-Control-Allow-Credentials", "true");
         const results = await Todo.create(request.body);
         return response.send(results);
     }
@@ -70,6 +81,8 @@ router.post("/", async (request, response) => {
 
 router.patch("/:id", async (request, response) => {
     try {
+        response.setHeader("Access-Control-Allow-Origin", "*")
+        response.setHeader("Access-Control-Allow-Credentials", "true");
         const results = await Todo.findByIdAndUpdate(request.params.id, request.body, { new: true });
         console.log("res", results);
         return response.send(results);
@@ -81,6 +94,8 @@ router.patch("/:id", async (request, response) => {
 
 router.delete("/:id", async (request, response) => {
     try {
+        response.setHeader("Access-Control-Allow-Origin", "*")
+        response.setHeader("Access-Control-Allow-Credentials", "true");
         const results = await Todo.findByIdAndDelete(request.params.id);
         arr.push(results)
         return response.send(results);

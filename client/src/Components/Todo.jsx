@@ -25,11 +25,11 @@ const Todo = () => {
         getTodos();
         getCompleted();
         getDeleted();
-    },[check])
+    }, [check])
 
     const todosInstance = axios.create({
-        baseURL: "http://localhost:3001/",
-        // baseURL: "https://todoapp-nitesh.herokuapp.com",
+        // baseURL: "http://localhost:3001/",
+        baseURL: "https://todoapp-nitesh.herokuapp.com",
         // baseURL: "",
     })
 
@@ -38,11 +38,15 @@ const Todo = () => {
         setinputList(res.data);
         setIsLoading(true);
 
-        // Using fetch
-        // const res = await fetch("/todos")
+        // // Using fetch
+        // const res = await fetch("https://todoapp-nitesh.herokuapp.com/todos", {
+        //     method: "GET",
+        //     headers: "Access-Control-Allow-Origin"
+        // })
         // let data = await res.json()
         // console.log("res", data)
         // setinputList(data);
+        // setIsLoading(true);
     }
 
     const getCompleted = async () => {
@@ -166,11 +170,11 @@ const Todo = () => {
     return <>
 
         {/* todo Input Part  */}
-        <InputGroup size='md' mt="1.5rem" mb={5}>
+        <InputGroup size='md' margin="auto" m={5} width="96%" alignItems="center">
             <Input pr='4.5rem' placeholder='Enter Task'
                 onChange={(e) => { setInputValue(e.target.value) }}
             />
-            <InputRightElement width='4.5rem'>
+            <InputRightElement width='3.5rem'>
                 <Button h='1.75rem' size='sm' onClick={handleAddTask}>
                     <Icon as={MdAdd} />
                 </Button>
@@ -191,14 +195,14 @@ const Todo = () => {
                 <GridItem colSpan={1} bg='#CFD2CF'>
                     <Heading size='md' color="#06283D" textDecoration="underline" bg="yellow.300" h="50px" p="2">In Progress</Heading>
                     {isLoading && inputList.map((list) => (
-                            <TodoItem
-                                list={list}
-                                key={list._id}
-                                handleEditTask={handleEditTask}
-                                handleCompletedTask={handleCompletedTask}
-                                handleDeleteTask={handleDeleteTask}
-                                handleEditInput={handleEditInput}
-                            />))}
+                        <TodoItem
+                            list={list}
+                            key={list._id}
+                            handleEditTask={handleEditTask}
+                            handleCompletedTask={handleCompletedTask}
+                            handleDeleteTask={handleDeleteTask}
+                            handleEditInput={handleEditInput}
+                        />))}
                 </GridItem>
 
                 {/* Completed task */}
