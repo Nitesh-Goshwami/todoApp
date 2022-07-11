@@ -7,7 +7,7 @@ const Todo = require("../models/todo.model");
 
 // exports.arr
 // <----------------------------------CRUD Operation for Todo----------------------------------->
-
+console.log("reaching here")
 
 router.get("/", async (request, response) => {
     try {
@@ -70,6 +70,8 @@ router.post("/", async (request, response) => {
     try {
         response.setHeader("Access-Control-Allow-Origin", "*")
         response.setHeader("Access-Control-Allow-Credentials", "true");
+        response.setHeader("Access-Control-Allow-Headers", "content-type");
+        response.setHeader("Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, PATCH, OPTIONS");
         const results = await Todo.create(request.body);
         return response.send(results);
     }
@@ -81,8 +83,11 @@ router.post("/", async (request, response) => {
 
 router.patch("/:id", async (request, response) => {
     try {
+        console.log("Nitesh","patch");
         response.setHeader("Access-Control-Allow-Origin", "*")
         response.setHeader("Access-Control-Allow-Credentials", "true");
+        response.setHeader("Access-Control-Allow-Headers", "content-type");
+        response.setHeader("Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, PATCH, OPTIONS");
         const results = await Todo.findByIdAndUpdate(request.params.id, request.body, { new: true });
         console.log("res", results);
         return response.send(results);
@@ -94,8 +99,8 @@ router.patch("/:id", async (request, response) => {
 
 router.delete("/:id", async (request, response) => {
     try {
-        response.setHeader("Access-Control-Allow-Origin", "*")
-        response.setHeader("Access-Control-Allow-Credentials", "true");
+        // response.setHeader("Access-Control-Allow-Origin", "*")
+        // response.setHeader("Access-Control-Allow-Credentials", "true");
         const results = await Todo.findByIdAndDelete(request.params.id);
         arr.push(results)
         return response.send(results);
