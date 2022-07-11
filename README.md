@@ -40,6 +40,10 @@ npm install redux react-redux redux-thunk axios react-router-dom @chakra-ui/reac
 ## Some of the snaps from the app
 ### Dashboard page
 ![Dashboard page](https://github.com/Nitesh-Goshwami/todoApp/blob/master/client/public/Images/Home.png?raw=true)
+### Signup page
+![Signup page](https://github.com/Nitesh-Goshwami/todoApp/blob/master/client/public/Images/signup.png?raw=true)
+### Signin page
+![Signin page](https://github.com/Nitesh-Goshwami/todoApp/blob/master/client/public/Images/signin.png?raw=true)
 ### Drawer
 ![Drawer](https://github.com/Nitesh-Goshwami/todoApp/blob/master/client/public/Images/Drawer.png?raw=true)
 ### Edit task 
