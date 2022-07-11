@@ -1,10 +1,10 @@
 # Todo App
 
-Please visit the app [Todo App](https://nit-todoapp.netlify.app/).
+Please visit the app [Todo App](https://nitesh-todoapp.vercel.app/).
 
 Or copy the link below, in your browser
 ```
-https://nit-todoapp.netlify.app/
+https://nitesh-todoapp.vercel.app/
 ```
 
 ## Using the app

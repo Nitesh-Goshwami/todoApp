@@ -36,8 +36,11 @@ const Drawers = () => {
                 <DrawerBody>
                     <List spacing={5} >
                         <ListItem display="flex" gap={2} fontWeight="bold">
-                            <Link to = "/">
-                                <Icon font-size="24px" as={MdHome} />  <div>Home</div>
+                            <Link to="/">
+                                <div style={{ display: "flex" }}>
+                                    <Icon font-size="24px" as={MdHome} />
+                                    <div style={{ marginLeft :"10px"}}>Home</div>
+                                </div>
                             </Link>
                         </ListItem>
                         <ListItem display="flex" gap={2} fontWeight="bold">
